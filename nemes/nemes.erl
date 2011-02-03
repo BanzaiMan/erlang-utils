@@ -43,7 +43,7 @@ gamma(X) ->
     Len = tuple_size(?f),
     if 
         % for integers up to 23, look up factorials
-        ((X > 0) and (X == trunc(X)) and (X =< Len)) ->
+        ((X > 0) and is_integer(X) and (X =< Len)) ->
             element(X, ?f);
         % otherwise, use logarithmic version of the approximation formula
         % to get the gamma-function value
@@ -55,7 +55,7 @@ gamma(X) ->
 sign(R) ->
     I = trunc(R),
     if
-        ((I rem 2 == 0) and (R == I) and (R < 0)) -> -1;
+        ((I rem 2 == 0) and is_integer(R) and (R < 0)) -> -1;
         true -> 1
     end.
 
@@ -88,7 +88,7 @@ log_gamma(R) ->
     I = trunc(R),
 
     if
-        ((I == R) and (I > 0) and (I =< Len)) ->
+        (is_integer(R) and (I > 0) and (I =< Len)) ->
             math:log(element(I, ?f));
         % if R is too small, use identity to get good approximation
         (R < 10) ->

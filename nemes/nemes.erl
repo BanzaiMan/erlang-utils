@@ -6,8 +6,7 @@
 %% Distributed under MIT license. See README.
 
 -module(nemes).
--include_lib("eunit/include/eunit.hrl").
--export([gamma/1, test/0]).
+-export([gamma/1]).
 
 -define (f, {
     1.0, % 0! = Gamma(1)

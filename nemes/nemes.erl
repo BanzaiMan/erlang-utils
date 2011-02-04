@@ -55,7 +55,8 @@ gamma(X) ->
 sign(R) ->
     I = trunc(R),
     if
-        ((I rem 2 == 0) and is_integer(R) and (R < 0)) -> -1;
+        ((I rem 2 == 0) and not(is_integer(R)) and (R < 0)) ->
+             -1;
         true -> 1
     end.
 

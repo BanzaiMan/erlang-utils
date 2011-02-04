@@ -4,6 +4,7 @@
 
 test() ->
     gamma_one_half_test(),
+    gamma_known_value_test(),
     gamma_factorial_test(),
     gamma_factorial_test2(),
     {ok, "Tests passed"}.
@@ -13,6 +14,9 @@ close(V, EV, Margin) ->
     
 gamma_one_half_test() ->
     ?assert( close( math:pow(nemes:gamma(0.5), 2), math:pi(), 1.0E-10) ).
+
+gamma_known_value_test() ->
+    ?assert( close( nemes:gamma(-0.25), -4.9016668098607, 1.0E-10 ) ).
 
 gamma_factorial_test() ->
     ?assertEqual( nemes:gamma(5), 24.0).
